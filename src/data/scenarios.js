@@ -1,0 +1,52 @@
+// Real Synchrony cards with current, representative new-account terms
+// (mid-2026). Mock account context (persona, limit) is for the demo.
+// Add a scenario here and it shows up everywhere — no other edits needed.
+
+export const SCENARIOS = [
+  {
+    id: "furniture",
+    card: "Ashley Advantage™ Card",
+    issuer: "Synchrony Bank",
+    tone: "#3C3C43",
+    person: "Jordan",
+    age: 23,
+    context: "furnishing a first apartment",
+    item: "a couch + bed set",
+    icon: "sofa",
+    principal: 1500,
+    promoMonths: 12,
+    apr: 29.99,
+    creditLimit: 2500,
+    badge: "Start here",
+  },
+  {
+    id: "appliance",
+    card: "MyLowe's Rewards Card",
+    issuer: "Synchrony Bank",
+    tone: "#004A93",
+    person: "Maya",
+    age: 22,
+    context: "a kitchen that came with nothing",
+    item: "a refrigerator",
+    icon: "fridge",
+    principal: 1400,
+    promoMonths: 12,
+    apr: 31.99,
+    creditLimit: 3000,
+  },
+  {
+    id: "dental",
+    card: "CareCredit",
+    issuer: "Synchrony Bank",
+    tone: "#2A7E76",
+    person: "Priya",
+    age: 25,
+    context: "a dental bill insurance didn't cover",
+    item: "a crown",
+    icon: "tooth",
+    principal: 1800,
+    promoMonths: 18,
+    apr: 32.99,
+    creditLimit: 4000,
+  },
+];
