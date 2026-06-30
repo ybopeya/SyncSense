@@ -2,7 +2,7 @@
 export const GUESS_OPTIONS = [
   { id: "spare", label: "Yes, with room to spare" },
   { id: "barely", label: "Just barely" },
-  { id: "hit", label: "No — they get hit" },
+  { id: "hit", label: "No, they get hit" },
   { id: "unsure", label: "Not sure" },
 ];
 

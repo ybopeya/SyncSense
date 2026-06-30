@@ -9,11 +9,14 @@ import PredictionGate from "./PredictionGate.jsx";
 import PaymentFix from "./PaymentFix.jsx";
 import CreditScorePanel from "./CreditScorePanel.jsx";
 
-// One scenario's full flow: predict -> reveal -> fix, plus the score panel.
+// One scenario's full flow. Presets run predict -> reveal -> fix; custom runs
+// (scenario.custom) skip the quiz and open straight on the chart + slider.
 // State resets automatically when App passes a new scenario (via key prop).
-export default function Simulator({ scenario, onBack }) {
+export default function Simulator({ scenario, onBack, onEdit }) {
+  const custom = !!scenario.custom;
+
   const [guess, setGuess] = useState(null);
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState(custom); // custom skips the prediction step
   const [payment, setPayment] = useState(minimumPayment(scenario.principal));
   const [touched, setTouched] = useState(false);
 
@@ -24,9 +27,9 @@ export default function Simulator({ scenario, onBack }) {
   const sim = useMemo(() => simulate(scenario, activePayment), [scenario, activePayment]);
   const phase = !revealed ? 1 : !touched ? 2 : 3;
 
-  function submitGuess(g) {
-    setGuess(g);
-    setTimeout(() => setRevealed(true), 220);
+  function completeQuestions(firstGuess) {
+    setGuess(firstGuess);
+    setRevealed(true);
   }
   function changePayment(value) {
     setTouched(true);
@@ -34,26 +37,42 @@ export default function Simulator({ scenario, onBack }) {
   }
   function replay() {
     setGuess(null);
-    setRevealed(false);
+    setRevealed(custom);
     setTouched(false);
     setPayment(min);
   }
 
   return (
     <main className="sim">
-      <button className="back" onClick={onBack}>
-        ← All scenarios
-      </button>
+      <div className="sim-nav">
+        <button className="back" onClick={onBack}>
+          ← All scenarios
+        </button>
+        {custom && (
+          <button className="back edit" onClick={onEdit}>
+            Edit my inputs
+          </button>
+        )}
+      </div>
 
-      <Stepper phase={phase} />
+      {!custom && <Stepper phase={phase} />}
 
       <div className="context">
         <CardChip scenario={scenario} size="sm" />
-        <p>
-          <strong>{scenario.person}</strong> put <strong>{money(scenario.principal)}</strong> for{" "}
-          {scenario.item} on this card — <em>0% if paid in full in {scenario.promoMonths} months</em>.
-          After that, {scenario.apr}% APR.
-        </p>
+        {custom ? (
+          <p>
+            <strong>Your plan:</strong> <strong>{money(scenario.principal)}</strong> on the{" "}
+            {scenario.card} — <em>0% if paid in full in {scenario.promoMonths} months</em>. After
+            that, {scenario.apr}% APR.
+          </p>
+        ) : (
+          <p>
+            <strong>{scenario.person}</strong> put <strong>{money(scenario.principal)}</strong> for{" "}
+            {scenario.item} on this card —{" "}
+            <em>0% if paid in full in {scenario.promoMonths} months</em>. After that, {scenario.apr}%
+            APR.
+          </p>
+        )}
       </div>
 
       <div className="board">
@@ -71,7 +90,7 @@ export default function Simulator({ scenario, onBack }) {
 
         <aside className="right">
           {!revealed ? (
-            <PredictionGate scenario={scenario} min={min} guess={guess} onGuess={submitGuess} />
+            <PredictionGate scenario={scenario} onComplete={completeQuestions} />
           ) : (
             <PaymentFix
               scenario={scenario}

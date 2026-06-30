@@ -1,7 +1,7 @@
 import { SCENARIOS } from "../data/scenarios.js";
 import ScenarioCard from "./ScenarioCard.jsx";
 
-export default function Home({ onOpen }) {
+export default function Home({ onOpen, onBuild }) {
   return (
     <main className="home">
       <div className="hero">
@@ -40,6 +40,15 @@ export default function Home({ onOpen }) {
         {SCENARIOS.map((s) => (
           <ScenarioCard key={s.id} scenario={s} onOpen={onOpen} />
         ))}
+
+        <button className="scard add" onClick={onBuild}>
+          <span className="add-plus">+</span>
+          <div className="add-text">
+            <strong>Try your own simulation</strong>
+            <span>Pick a Synchrony card and plug in your real numbers</span>
+          </div>
+          <span className="add-go">Build it →</span>
+        </button>
       </div>
 
       <p className="foot">

@@ -20,7 +20,7 @@ export default function ScenarioCard({ scenario, onOpen }) {
             <dd>0% for {scenario.promoMonths} mo</dd>
           </div>
           <div>
-            <dt>Then</dt>
+            <dt>Rate</dt>
             <dd>{scenario.apr}% APR</dd>
           </div>
           <div>

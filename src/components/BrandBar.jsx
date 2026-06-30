@@ -5,7 +5,7 @@ export default function BrandBar({ onHome }) {
       <button className="wordmark" onClick={onHome}>
         <span className="mark" /> synchrony
       </button>
-      <span className="feature">Deadline Coach</span>
+      <span className="feature">SyncSense</span>
       <span className="demo">Demo</span>
     </header>
   );

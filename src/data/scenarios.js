@@ -17,7 +17,6 @@ export const SCENARIOS = [
     promoMonths: 12,
     apr: 29.99,
     creditLimit: 2500,
-    badge: "Start here",
   },
   {
     id: "appliance",

@@ -27,6 +27,21 @@ export default function CardIcon({ type }) {
       </svg>
     );
 
+  if (type === "home")
+    return (
+      <svg viewBox="0 0 24 24" {...common}>
+        <path d="M4 11l8-6 8 6" />
+        <path d="M6 10v9h12v-9" />
+        <path d="M10 19v-5h4v5" />
+      </svg>
+    );
+    if (type === "car")
+      return (
+        <svg viewBox="0 0 24 24" {...common}>
+          <path d="M3 13l1.6-4.6A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.4L21 13v3H3v-3Z" />
+          <path d="M3 13h18M7 16h.01M17 16h.01M5 16v1.5M19 16v1.5" />
+        </svg>
+      );
   // tooth
   return (
     <svg viewBox="0 0 24 24" {...common}>

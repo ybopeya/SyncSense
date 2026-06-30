@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Mulish:wght@400;500;600;700&display=swap');
+
 
 /* ── Design tokens (Synchrony-flavored light theme) ────────────────────── */
 :root{
@@ -9,8 +10,8 @@
   --green:#127A48; --green-soft:#E4F3EA;
   --red:#C5331C; --red-soft:#FBE9E5;
   --navy:#1B2A4A;
-  --disp:'Inter Tight',system-ui,sans-serif;
-  --body:'Inter',system-ui,sans-serif;
+  --disp:'Poppins',system-ui,sans-serif;
+  --body:'Mulish',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
@@ -47,15 +48,17 @@ body{margin:0}
 .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
 @media(max-width:820px){.cards{grid-template-columns:1fr;}}
 .scard{position:relative; text-align:left; cursor:pointer; padding:0; overflow:hidden;
+  display:flex; flex-direction:column;
   background:var(--surface); border:1px solid var(--line); border-radius:18px;
   transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;}
 .scard:hover{transform:translateY(-3px); border-color:var(--gold); box-shadow:0 16px 34px -22px rgba(0,0,0,.4);}
 .badge{position:absolute; top:12px; right:12px; z-index:2; font-size:11px; font-weight:700;
   background:var(--gold); color:var(--ink); padding:4px 10px; border-radius:999px;}
 .chip{display:flex; align-items:center; gap:11px; padding:16px 18px; color:#fff;}
+.scard .chip{width:100%; border-top-left-radius:17px; border-top-right-radius:17px;}
 .chip .chip-meta{display:flex; flex-direction:column; line-height:1.2;}
 .chip .chip-meta span{font-size:10.5px; opacity:.75; letter-spacing:.02em;}
-.chip .chip-meta strong{font-size:15px; font-weight:700;}
+.chip .chip-meta strong{font-size:15px; font-weight:700; color:#fff;}
 .chip.sm{border-radius:12px; padding:10px 13px;}
 .chip.sm .chip-meta strong{font-size:13.5px;}
 .scard-body{padding:16px 18px 4px;}
@@ -65,7 +68,7 @@ body{margin:0}
 .terms div{display:flex; flex-direction:column;}
 .terms dt{font-size:10.5px; color:var(--ink3); margin:0;}
 .terms dd{font-size:13px; font-weight:600; margin:2px 0 0;}
-.scard-go{padding:14px 18px 18px; color:var(--gold-deep); font-weight:600; font-size:13.5px;}
+.scard-go{padding:14px 18px 18px; color:var(--gold-deep); font-weight:600; font-size:13.5px; margin-top:auto;}
 .foot{color:var(--ink3); font-size:11.5px; margin:26px 0 0; max-width:70ch;}
 .foot.wide{margin-top:28px; line-height:1.5;}
 
@@ -195,3 +198,83 @@ body{margin:0}
 .score-disclaimer strong{color:var(--ink);}
 
 @media(prefers-reduced-motion:reduce){.line,.cliff,.cliff-note{animation:none; stroke-dashoffset:0; opacity:1;}}
+
+/* ── Question sequence (intuition builder, step 1) ─────────────────────── */
+.qcount{font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:12px;}
+.qdots{display:flex; gap:6px; margin-bottom:16px;}
+.qdot{width:26px; height:4px; border-radius:99px; background:var(--soft);}
+.qdot.done{background:var(--gold-deep);}
+.qdot.on{background:var(--gold);}
+.opt:disabled{cursor:default;}
+.opt:disabled:hover{border-color:var(--line); background:var(--surface);}
+.opt.correct{border-color:var(--green); background:var(--green-soft); color:var(--ink);}
+.opt.correct:hover{border-color:var(--green); background:var(--green-soft);}
+.opt.wrong{border-color:var(--red); background:var(--red-soft); color:var(--ink);}
+.opt.wrong:hover{border-color:var(--red); background:var(--red-soft);}
+.explain{margin-top:14px; padding:13px 15px; border-radius:12px; background:var(--bg); border:1px solid var(--line);
+  font-size:13.5px; line-height:1.55; color:var(--ink2);}
+.explain b{display:block; margin-bottom:4px; font-family:var(--disp); font-size:13px; letter-spacing:.01em;}
+.explain b.right{color:var(--green);}
+.explain b.wrong{color:var(--red);}
+.qnext{margin-top:14px; width:100%; cursor:pointer; font-family:var(--body); font-weight:600; font-size:14px;
+  color:#fff; background:var(--ink); border:none; border-radius:11px; padding:12px;}
+.qnext:hover{background:#000;}
+
+
+/* ── "Try your own simulation" tile on home ────────────────────────────── */
+.scard.add{grid-column:1 / -1; display:flex; flex-direction:row; align-items:center; gap:16px; padding:18px 20px;
+  background:var(--surface); border:1.5px dashed var(--line); border-radius:18px; cursor:pointer; text-align:left;
+  transition:border-color .16s ease, background .16s ease, transform .16s ease;}
+.scard.add:hover{border-color:var(--gold); background:var(--gold-soft); transform:none; box-shadow:none;}
+.add-plus{flex:none; width:40px; height:40px; border-radius:11px; display:grid; place-items:center;
+  font-family:var(--disp); font-weight:800; font-size:24px; background:var(--gold); color:var(--ink);}
+.add-text{display:flex; flex-direction:column; line-height:1.3;}
+.add-text strong{font-family:var(--disp); font-weight:700; font-size:17px;}
+.add-text span{font-size:13px; color:var(--ink3);}
+.add-go{margin-left:auto; color:var(--gold-deep); font-weight:600; font-size:13.5px;}
+
+/* ── Custom builder screen ─────────────────────────────────────────────── */
+.build{max-width:680px; margin:0 auto; padding:clamp(18px,3vw,32px) clamp(16px,4vw,40px) 60px;}
+.build-title{font-family:var(--disp); font-weight:800; font-size:clamp(26px,4vw,36px); letter-spacing:-.02em; margin:6px 0 0;}
+.build-sub{font-size:15px; color:var(--ink2); line-height:1.55; margin:12px 0 24px; max-width:56ch;}
+.builder{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:clamp(18px,3vw,26px);}
+.builder-preview{display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line);}
+.preview-terms{display:flex; flex-direction:column; gap:2px;}
+.preview-terms span{font-size:12.5px; color:var(--ink2);}
+.preview-terms span:first-child{font-weight:600; color:var(--ink);}
+
+.field{display:block; margin-bottom:18px;}
+.field-lbl{display:block; font-size:13px; font-weight:600; color:var(--ink2); margin-bottom:8px;}
+.field select{width:100%; font-family:var(--body); font-size:15px; color:var(--ink); background:var(--bg);
+  border:1.5px solid var(--line); border-radius:11px; padding:12px 14px; cursor:pointer; appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238A8E96' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 14px center;}
+.field select:focus{outline:none; border-color:var(--gold);}
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+.money-input{display:flex; align-items:center; background:var(--bg); border:1.5px solid var(--line); border-radius:11px; padding:0 14px;}
+.money-input:focus-within{border-color:var(--gold);}
+.money-input span{color:var(--ink3); font-size:15px;}
+.money-input input{flex:1; width:100%; border:none; background:none; outline:none; font-family:var(--body);
+  font-size:15px; color:var(--ink); padding:12px 0 12px 6px; font-variant-numeric:tabular-nums;}
+.field-hint{display:block; font-size:12px; margin-top:7px; line-height:1.4;}
+.field-hint.warn{color:var(--gold-deep);}
+
+.run{width:100%; margin-top:6px; cursor:pointer; font-family:var(--body); font-weight:700; font-size:15px;
+  color:var(--ink); background:var(--gold); border:none; border-radius:12px; padding:14px;}
+.run:hover{background:#e8b400;}
+.run:disabled{background:var(--soft); color:var(--ink3); cursor:not-allowed;}
+.build-foot{font-size:11.5px; color:var(--ink3); line-height:1.5; margin:14px 0 0; text-align:center;}
+
+.sim-nav{display:flex; align-items:center; gap:16px; margin-bottom:18px;}
+.sim-nav .back{margin-bottom:0;}
+.back.edit{color:var(--gold-deep); font-weight:600;}
+
+/* Synchrony-style all-caps display headings */
+.hero h1,
+.choose,
+.build-title,
+.score-head h3 {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
