@@ -1,4 +1,4 @@
-# SyncSence — Deadline Coach
+# SyncSense — Deadline Coach
 
 An interactive coach that shows first-time credit users the **deferred-interest trap**
 on real Synchrony retail cards (CareCredit, MyLowe's, Ashley Advantage, Synchrony HOME,
