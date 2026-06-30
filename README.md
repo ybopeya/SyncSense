@@ -1,15 +1,12 @@
 # SyncSense — Deadline Coach
 
-An interactive coach that shows first-time credit users the **deferred-interest trap**
-on real Synchrony retail cards (CareCredit, MyLowe's, Ashley Advantage, Synchrony HOME,
-Car Care): "0% if paid in full" purchases where missing the deadline posts *all* the
-interest retroactively from day one.
+An interactive learning tool that helps first-time credit users understand how **deferred-interest promotional financing** works on Synchrony cards (CareCredit, MyLowe's, Ashley Advantage, Synchrony HOME, Car Care). With a "no interest if paid in full" offer, interest is only charged if the promotional balance isn't paid off by the deadline — so the Deadline Coach lets cardholders see, in plain terms, exactly what their payments mean and how to clear a balance on time.
 
-Each preset runs a short flow: **predict** the outcome across three quick questions →
-**see** the deadline play out on a month-by-month cliff chart → **find** the payment that
-clears it in time. A credit-score panel ties the purchase back to utilization, scoped
-honestly to the one factor it actually models. Users can also build their **own**
-simulation from a catalog of real Synchrony cards.
+Each example runs a short flow: **predict**  the outcome across three quick questions → 
+**see** the promotional period play out month by month → **find** the monthly payment that 
+pays it off in time. A credit-score panel connects the purchase to credit utilization, and 
+cardholders can build their own simulation from a catalog of real Synchrony cards.
+
 
 ## Run it
 
