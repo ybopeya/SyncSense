@@ -2,6 +2,9 @@
 
 An interactive learning tool that helps first-time credit users understand how **deferred-interest promotional financing** works on Synchrony cards (CareCredit, MyLowe's, Ashley Advantage, Synchrony HOME, Car Care). With a "no interest if paid in full" offer, interest is only charged if the promotional balance isn't paid off by the deadline — so the Deadline Coach lets cardholders see, in plain terms, exactly what their payments mean and how to clear a balance on time.
 
+![Project Screenshot](assets/syncsense.png)
+
+
 Each example runs a short flow: **predict**  the outcome across three quick questions → 
 **see** the promotional period play out month by month → **find** the monthly payment that 
 pays it off in time. A credit-score panel connects the purchase to credit utilization, and 
